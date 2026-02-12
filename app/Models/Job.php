@@ -18,10 +18,10 @@ class Job extends Model
         return $this->belongsTo(Employer::class);
     }
 
-    public function jobs(): HasMany
+    /*public function jobs(): HasMany
     {
         return $this->hasMany(Job::class);
-    }
+    }*/
 
     public function tags(): BelongsToMany
     {

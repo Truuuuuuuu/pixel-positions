@@ -11,7 +11,7 @@
     <title>Pixel Positions</title>
     @vite(['resources/js/app.js'])
 </head>
-<body class="bg-[#060606] text-white font-hanken-grotesk">
+<body class="bg-[#060606] text-white font-hanken-grotesk pb-20">
         <div class="px-10">
             <nav class="flex justify-between items-center py-4 border-b border-white/10">
                 <div>
@@ -20,12 +20,29 @@
                     </a>
                 </div>
                 <div class="space-x-6 font-bold">
-                    <a href="#" >Jobs</a>
+                    <a href="/" >Jobs</a>
                     <a href="#">Careers</a>
                     <a href="#">Salaries</a>
                     <a href="#">Companies</a>
                 </div>
-                <a href="">Post a job</a>
+
+                @auth
+                <div class="space-x-6 font-bold flex">
+                    <a href="/jobs/create">Post a job</a>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        @method('DELETE')
+                        <button class="hover:cursor-pointer">Log Out</button>
+                    </form>
+                </div>
+                @endauth
+
+                @guest
+                    <div class="space-x-6 font-bold">
+                        <a href="/register" >Sign Up</a>
+                        <a href="/login">Log In</a>
+                    </div>
+                @endguest
             </nav>
 
             <main class="mt-10 max-w-[986px] mx-auto">
